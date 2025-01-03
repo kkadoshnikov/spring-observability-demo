@@ -11,7 +11,7 @@ services:
       - observability
 
   grafana:
-    image: grafana/grafana:11.4.0
+    image: grafana/grafana:latest
     container_name: grafana
     ports:
       - "3000:3000"
@@ -20,6 +20,14 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_DATASOURCE_NAME=Prometheus
+      - GF_DATASOURCE_TYPE=prometheus
+      - GF_DATASOURCE_URL=http://prometheus:9090
+    volumes:
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
 
   elasticsearch:
     image: elasticsearch:8.17.0
