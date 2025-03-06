@@ -1,4 +1,4 @@
-package com.gmail.kadoshnikovkirill.observability_demo
+package com.gmail.kadoshnikovkirill
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
